@@ -1,6 +1,12 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_print, avoid_unnecessary_containers, depend_on_referenced_packages, unnecessary_cast, use_build_context_synchronously
 
+import 'package:attendance/Pages/Admin/AdminHome.dart';
+import 'package:attendance/Pages/Admin/bottomNavigation.dart';
 import 'package:flutter/material.dart';
+import 'package:attendance/SignUp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'Firebase/auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,6 +19,21 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final Firebase _auth = Firebase();
+
+  void signIn(BuildContext context) async {
+    String email = _usernameController.text;
+    String password = _passwordController.text;
+    User? user = await _auth.signInWithEmailAndPassword(email, password);
+    if (user != null) {
+      print("user is created");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BottomBar()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           String password = _passwordController.text;
                           print(
                               'Signing in with username: $username, password: $password');
+                          signIn(context);
                         }
                       },
                       style: ButtonStyle(
@@ -174,7 +196,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           TextButton(
             onPressed: () {
-              print("hello");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUp()),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.only(right: 7.0, left: 7.0),

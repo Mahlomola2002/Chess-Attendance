@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1055544815856",
+    "project_id": "chess-attendace",
+    "storage_bucket": "chess-attendace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055544815856:android:4899c44d2089cd71679235",
+        "android_client_info": {
+          "package_name": "com.example.attendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQr-Hs5uCJSmsEVzoX4rVVIIz5Ht6VN64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
